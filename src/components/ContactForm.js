@@ -1,24 +1,26 @@
 import React,{useState} from 'react';
 
 
-const ContactForm = () => {
+const ContactForm = (props) => {
     const initialValues={
         fullName:" ",
         address:" ",
         email:" ",
         phone:" "
     }
+
     let [value,setValue]=useState(initialValues);
 
-    handleChange = (e) =>{
-        const {name,value}=e.target;
+    const handleChange = (e) =>{
+        let {name,value}=e.target;
         setValue ({
             ...value,
             [name]:value
         })
     }
-    handleSubmit=(e)=>{
+   const handleSubmit=(e)=>{
         e.preventDefault();
+        props.addData(value);
         
     }
     return (
